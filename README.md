@@ -10,6 +10,10 @@ App run.
 2.Install requirements.
   
   pip install -r requirements.txt
+  
+3.Migration Database.
+  
+  python manage.py migrate
  
 3.Run project.
   
