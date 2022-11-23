@@ -1,0 +1,32 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="container my-3">
+    Home Page
+    <div class="row">
+        {% for item in items %}
+        {% if item.count > 0 %}
+        <div class="col-sm-4">
+
+            <div class="card my-3">
+                <div class="card-header">{{ item.name }}</div>
+                <div class="card-body">{{ item.description }}</div>
+                <div class="card-footer">${{ item.price }}</div>
+                <div class="card-footer">Count: {{ item.count }}</div>
+                <a class="btn btn-success" href="{% url 'add_to_cart' id=item.id %}">Add to cart</a>
+            </div>
+
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/index.js' %}"></script>
+{% endblock %}

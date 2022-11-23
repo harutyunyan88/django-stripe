@@ -1,0 +1,50 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% load django_template_maths %}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/cart.css' %}">
+{% endblock %}
+{% block content %}
+<section class="container my-3">
+    <div class="cart_block">
+        {% for cart in carts %}
+        <div class="cart">
+            <div>
+                <h5>Name</h5>
+                <p>{{ cart.name }}</p>
+            </div>
+            <div>
+                <h5>Description</h5>
+                <p>{{ cart.description }}</p>
+            </div>
+            <div>
+                <h5>Price</h5>
+                <p>${{ cart.price }}</p>
+            </div>
+            <div>
+                <h5>Quantity</h5>
+                <div class="order_quantity">
+                    <a href="{% url 'minus_cart' id=cart.id %}">-</a>
+                    <p>{{ cart.quantity }}</p>
+                    <a href="{% url 'plus_cart' id=cart.id %}">+</a>
+                </div>
+            </div>
+            <div>
+                <h5>Total</h5>
+                <p>${{ cart.quantity|mul:cart.price }}</p>
+            </div>
+            <a href="{% url 'remove_cart' id=cart.id %}"><i class="fas fa-trash-alt"></i></a>
+        </div>
+        {% endfor %}
+        {% if carts|length > 0 %}
+            <button onclick="checkout()">BUY</button>
+        {% else %}
+            <h5>Empty Cart</h5>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/index.js' %}"></script>
+{% endblock %}

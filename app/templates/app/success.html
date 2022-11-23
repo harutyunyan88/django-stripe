@@ -1,0 +1,17 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="container my-3">
+    <div class="payment_success">
+        <i class="fas fa-check-circle"></i>
+        <h2>Payment successfully completed</h2>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/index.js' %}"></script>
+{% endblock %}
