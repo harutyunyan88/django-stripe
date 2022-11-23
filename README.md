@@ -2,6 +2,7 @@
 Stripe online payment
 App run.
 
+
 1.Create virtual environment and activate
  $ python3 -m venv djangoenv  
  $ source djangoenv/bin/activate  
